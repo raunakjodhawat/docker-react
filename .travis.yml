@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -f Dockerfile.dev -t raunakjodhawat/frontend:latest .
+
+script:
+    - docker run -e CI=true raunakjodhawat/frontend npm run test -- --coverage
